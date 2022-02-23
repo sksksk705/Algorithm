@@ -4,7 +4,7 @@
 
 using namespace std;
 string s;
-bool check_pal(int start, int end, int depth) {
+bool check_pal(int start, int end) {
 	if (start == end)
 		return true;
 	int size = end - start+1;
@@ -20,21 +20,20 @@ bool check_pal(int start, int end, int depth) {
 	{
 		left = mid;
 		right = mid+1;
-
 	}
 	for (int i = 0; i < size/2; ++i)
 	{
 		if (s[left - i] != s[right + i])
 			return false;
 	}
-	return (check_pal(0, left,depth+1) && check_pal(right, s.size()-1,depth+1));
+	return (check_pal(start, left) && check_pal(right, end));
 }
 
 int main() {
 
 	cin >> s;
 
-	if (check_pal(0,s.size()-1,1))
+	if (check_pal(0,s.size()-1))
 		cout << "AKARAKA";
 	else
 		cout << "IPSELENTI";
