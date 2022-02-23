@@ -28,3 +28,12 @@ Debug/Baekjoon.tlog/link.write.1.tlog
 *.obj
 *.enc
 .vs/Baekjoon/v16/Solution.VC.db
+*.exe
+*.recipe
+*.ilk
+*.log
+*.pdb
+*.txt
+*.idb
+*.lastbuildstate
+*.tlog
