@@ -1,6 +1,7 @@
 //2022_04_07 랜덤문제풀이
 //2412 암벽등반
 
+//양방향 탐색을 해줘다한다는데...이해가 안되서 포기
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -25,13 +26,13 @@ int getPath(int top) {
 		int nowPath = pathQ.front();
 		int idx = idxQ.front();
 		holeQ.pop(); pathQ.pop(); idxQ.pop();
-		int nowX = nowHole.first;
-		int nowY = nowHole.second;
+		int nowX = nowHole.second;
+		int nowY = nowHole.first;
 		if (nowY == top)
 			return nowPath;
 		for (int nextHole = idx+1; nextHole < n; ++nextHole) {
-			int ny = holes[nextHole].second;
-			int nx = holes[nextHole].first;
+			int ny = holes[nextHole].first;
+			int nx = holes[nextHole].second;
 			if (visited[nextHole] ||
 				abs(nx - nowX) > 2 ||
 				abs(ny - nowY) > 2)
@@ -51,7 +52,7 @@ int main() {
 	for (int i = 0; i < n; ++i) {
 		int holeX, holeY;
 		cin >> holeX>>holeY;
-		holes.push_back(make_pair(holeX, holeY));
+		holes.push_back(make_pair(holeY, holeX));
 	}
 	sort(holes.begin(), holes.end());
 	int result = getPath(T);
