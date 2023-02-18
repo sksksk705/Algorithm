@@ -73,10 +73,11 @@ def clusterSimulation(x,y):
         continue
       minDist = min(dist,minDist)
     #cluster를 아래로 움직여줌
-    cluster.sort(key=lambda x:(-x[1],x[0]))
     for mineral in cluster:
       (mx,my) = mineral
       minerals[my][mx] = '.'
+    for mineral in cluster:
+      (mx,my) = mineral
       minerals[my+minDist-1][mx] = 'x'
     
 
