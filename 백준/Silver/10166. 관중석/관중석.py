@@ -1,14 +1,14 @@
-from math import gcd
-from sys import stdin
+def GCD(a,b):
+    if(a%b) == 0:
+        return b
+    else:
+        return GCD(b,a%b)
 
-d1,d2 = map(int,stdin.readline().split())
-arr = [[0]* d2 for _ in range(d2)]
+d1,d2 = map(int,input().split())
 
-ans = 0
+s= set()
 for i in range(d1,d2+1):
     for j in range(1,i+1):
-        g = gcd(i,j)
-        if not arr[i//g-1][j//g-1]:
-            arr[i//g-1][j//g-1] = 1
-            ans += 1
-print(ans)
+        gcd = GCD(j,i)
+        s.add((j/gcd,i/gcd))
+print(len(s))
