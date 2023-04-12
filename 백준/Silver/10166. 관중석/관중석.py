@@ -6,9 +6,12 @@ def GCD(a,b):
 
 d1,d2 = map(int,input().split())
 
-s= set()
+d= dict()
 for i in range(d1,d2+1):
     for j in range(1,i+1):
         gcd = GCD(j,i)
-        s.add((j/gcd,i/gcd))
-print(len(s))
+        x = j//gcd
+        y = i//gcd
+        if (x,y) not in d:
+            d[(x,y)] = 1
+print(len(d))
