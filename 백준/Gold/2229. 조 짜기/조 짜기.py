@@ -7,8 +7,11 @@ n = int(input())
 scores = list(map(int, input().split()))
 
 dp = [0] * (n+1)
-for i in range(n-1,-1,-1):
-  for j in range(1,n-i+1):
-    dp[i] = max(dp[i], max(scores[i:i+j]) - min(scores[i:i+j]) + dp[i+j])
+for i in range(n):
+  mx = mn = scores[i]
+  for j in range(i,-1,-1):
+    mx = max(mx,scores[j])
+    mn = min(mn,scores[j])
+    dp[i+1] = max(dp[i+1],dp[j]+mx-mn)
     
-print(dp[0])
+print(dp[n])
